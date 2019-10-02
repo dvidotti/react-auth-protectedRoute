@@ -4,7 +4,7 @@
 Template for Authentication Routes in React - Responsive.
 
 
-![](https://github.com/dvidotti/react-auth-protectedRoute/readme/login.png)
+![](https://github.com/dvidotti/react-auth-protectedRoute/readme/login_mobile.png)
 
 ### Includes
 
@@ -30,4 +30,4 @@ You can improve it by sending pull requests to [this repository](https://github.
 
 ### License
 
-React is [MIT licensed](./LICENSE).
+React-Auth-ProtectedRoute is [MIT licensed](./LICENSE).
