@@ -4,7 +4,7 @@
 Template for Authentication Routes in React - Responsive.
 
 
-![mobile-version](https://github.com/dvidotti/react-auth-protectedRoute/Readme/login_mobile.png)
+![mobile-version](Readme/login_mobile.png)
 
 ### Includes
 
