@@ -21,7 +21,7 @@ npm install
 
 ### Purpose
 
-React-Auth-ProtectedRoute has been designed make the beggining of the development process easier and faster.
+React-Auth-ProtectedRoute has been designed to make the beggining of the development process easier and faster.
 
 ## Contributing
 
