@@ -1,0 +1,104 @@
+/* // ------------------ MOBILE ----------------- // */
+
+.nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: auto;
+  border-bottom: 1px solid gray;
+  border-width: thin;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.nav-logo {
+  width: 23%;
+  padding: 3% 4%;
+}
+
+.title-home {
+  text-align: -webkit-left;
+  color: midnightblue;
+  margin: 45% 0 10% 8%;
+  font-size: 2em;
+}
+
+.form-button {
+  border: 1px solid gray;
+  margin: 8%;
+  padding: 2% 4%;
+  background-color: gray;
+  color: white;
+  font-weight: bolder;
+  font-size: .9rem;
+}
+
+.subtitle {
+  margin-left: 8%;
+  text-decoration: underline;
+  font-size: 1.2rem;
+}
+
+.article {
+  margin: 15% 8%;
+  line-height: 1.5rem;
+}
+
+.section-body{
+  margin-top: 50%;
+}
+
+footer{
+  background-color: gray;
+  height:7%;
+  padding: 5% 10%;
+  color:white;
+}
+
+/* // ----------------- DESKTOP ------------------ // */
+
+@media (min-width: 415px) {
+  .full-home-page{
+    width: 100%;
+  }
+
+  .nav {   
+    height: 70px;
+  }
+
+  .form-button {
+    margin: 15px;
+    padding: 0% 2%;
+  }
+
+
+  .nav-logo {
+    width: 70px;
+    height: auto;
+    padding: 0px 3%;
+  }
+
+  .section-body {
+    margin-top: 5%;
+  }
+
+  .title-home{
+    margin:13% 0 7% 8%;
+    font-size:3em;
+  }
+
+  .subtitle {
+    font-size: 2em;
+  }
+
+  .article {
+    margin: 5% 8%;
+    line-height: 1.5rem;
+  }
+
+  footer {
+    padding: 2% 10%;
+    height:20px;
+  }
+}
