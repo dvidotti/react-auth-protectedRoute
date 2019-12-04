@@ -1,14 +1,16 @@
-import React  from 'react' 
+import React, { useContext } from 'react' 
 import AuthRoute from '../Auth/auth-route'
 import './Home.css'
+import { UserContext } from '../../context/UserContext'
 
 const Home = (props) => {
+  const { fetchUser } = useContext(UserContext)
   const service = new AuthRoute();
  
   const logoutUser = () => {
     service.logout()
     .then(() => {
-      props.getUser(null)
+      fetchUser(null)
     })
   }
 

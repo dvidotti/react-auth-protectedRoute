@@ -1,13 +1,15 @@
-import React, { useState }from "react"
+import React, { useState, useContext }from "react"
 import AuthRoute from './auth-route'
 import { Link } from 'react-router-dom';
 import './Auth.css'
+import { UserContext } from "../../context/UserContext";
 
 const Login = (props) => {
+  const {fetchUser } = useContext(UserContext);
     const [name, getName] = useState('');
     const [password, getPassword] = useState('');
     const [message, getMessage] = useState('');
-    let service = new AuthRoute();
+    const service = new AuthRoute();
 
     
   const handleFormSubmit = (event) => {
@@ -17,12 +19,13 @@ const Login = (props) => {
     } else {
         service.login(name, password)
         .then(response => { 
-         getName('');
-         getPassword('');
-          props.getUser(response)
+          fetchUser(response)
+          getName('');
+          getPassword('');
           props.history.push('./home')
         })
         .catch(error => {
+          getMessage('there was an an error');
           getMessage(error.response.data.message);
         })
     }
