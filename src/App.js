@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Switch, Route } from "react-router-dom"
 import './App.css';
 import AuthService from './components/Auth/auth-route';
@@ -8,63 +8,45 @@ import Home from './components/Home/Home'
 import SignUp from './components/Auth/SignUp';
 
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name:'',
-      password: '',
-      loggedInUser: false
-    }
-    this.service = new AuthService();
-    // this.fetchUser = this.fetchUser.bind(this);
-    this.getUser = this.getUser.bind(this);
-  }
-
-
+const App = () => {
+  const [ loggedInUser, getLoggedInUser ] = useState(false)
+  const service = new AuthService();
   
-  fetchUser() {
-    if (this.state.loggedInUser === null) {
-      this.service.loggedin()
+  const fetchUser = () => {
+    if (loggedInUser === null) {
+      service.loggedin()
       .then(response => {
-        console.log('RESPONSE FETCH',response)
-        this.setState({
-          loggedInUser: response
+        getLoggedInUser(response)
         })
-      })
       .catch(err => {
-        this.setState({
-          loggedInUser: false
-        })
+        getLoggedInUser(false)
       })
     }
   }
   
-  getUser(userObj) {
-    this.setState({loggedInUser:userObj})
+  const getUser = (userObj) => {
+    getLoggedInUser(userObj)
   }
 
-
-  render() {
-    this.fetchUser();
-    if (this.state.loggedInUser) {
-      return (
-        <Switch>
-          <ProtectedRoute exact path="/login" getUser={this.getUser} user={this.state.loggedInUser} component={Home}/>} />
-          <ProtectedRoute exact path="/home" getUser={this.getUser} user={this.state.loggedInUser} component={Home}/>/>
-          <ProtectedRoute exact path="/signup" getUser={this.getUser} user={this.state.loggedInUser} component={Home}/>/>
-        </Switch>
-      );
-    } else {
-      return (
-        <Switch>
-          <Route path="/login" render={(props) => <Login {...props} getUser={this.getUser}/>} />
-          <Route path="/signup" render={(props) => <SignUp {...props} getUser={this.getUser}/>} />
-          <ProtectedRoute path="/home" getUser={this.getUSer} user={this.state.loggedInUser} component={Home} />
-        </Switch>
-      )
-      }
+  fetchUser();
+  if (loggedInUser) {
+    return (
+      <Switch>
+        <ProtectedRoute exact path="/login" getUser={getUser} user={loggedInUser} component={Home}/>} />
+        <ProtectedRoute exact path="/home" getUser={getUser} user={loggedInUser} component={Home}/>/>
+        <ProtectedRoute exact path="/signup" getUser={getUser} user={loggedInUser} component={Home}/>/>
+      </Switch>
+    );
+  } else {
+    return (
+      <Switch>
+        <Route path="/login" render={(props) => <Login {...props} getUser={getUser}/>} />
+        <Route path="/signup" render={(props) => <SignUp {...props} getUser={getUser}/>} />
+        <ProtectedRoute path="/home" getUser={getUser} user={loggedInUser} component={Home} />
+      </Switch>
+    )
   }
 }
+
 
 export default App;
